@@ -1,5 +1,8 @@
 import { useState } from "react";
 import Resume from "./components/Resume";
+import PersonalForm from "./components/PersonalForm";
+import EducationalForm from "./components/EducationalForm";
+import OccupationalForm from "./components/OccupationalForm";
 
 const App = () => {
   const [personal, setPersonal] = useState({
@@ -33,39 +36,9 @@ const App = () => {
         />
       </main>
       <aside>
-        <form className="form input-text">
-          <h3>Personal</h3>
-          <label htmlFor="name">Name</label>
-          <input type="text" id="name" className="input" required />
-          <label htmlFor="email">Email</label>
-          <input type="text" id="email" className="input" required />
-          <label htmlFor="Number">Number</label>
-          <input type="text" id="Number" className="input" required />
-          <label htmlFor="Address">Address</label>
-          <input type="text" id="Address" className="input" required />
-        </form>
-        <form className="form input-text">
-          <h3>Education</h3>
-          <label htmlFor="School">School Name</label>
-          <input type="text" id="School" className="input" required />
-          <label htmlFor="study">Field Studied</label>
-          <input type="text" id="study" className="input" required />
-          <label htmlFor="date">Date</label>
-          <input type="text" id="date" className="input" required />
-          <label htmlFor="details">Details</label>
-          <input type="text" id="details" className="input" />
-        </form>
-        <form className="form input-text">
-          <h3>Experience</h3>
-          <label htmlFor="company">Company</label>
-          <input type="text" id="company" className="input" />
-          <label htmlFor="title">Title</label>
-          <input type="text" id="title" className="input" />
-          <label htmlFor="date">Date</label>
-          <input type="text" id="date" className="input" />
-          <label htmlFor="details">Details</label>
-          <input type="text" id="details" className="input" />
-        </form>
+        <PersonalForm personal={personal} />
+        <EducationalForm educational={educational} />
+        <OccupationalForm occupational={occupational} />
       </aside>
       <footer></footer>
     </div>
