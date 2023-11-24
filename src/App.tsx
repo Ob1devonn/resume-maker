@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import Resume from "./components/Resume";
 import PersonalForm from "./components/PersonalForm";
 import EducationalForm from "./components/EducationalForm";
@@ -11,6 +11,18 @@ const App = () => {
     number: 1234567891,
     address: "123 Main st. Denver, Co. 80222",
   });
+
+  const handlePersonal = (
+    newVal: SetStateAction<{
+      name: string;
+      email: string;
+      number: number;
+      address: string;
+    }>
+  ) => {
+    setPersonal(newVal);
+  };
+
   const [educational, setEducational] = useState({
     schoolName: "Stuff",
     study: "Stuff",
@@ -36,7 +48,8 @@ const App = () => {
         />
       </main>
       <aside>
-        <PersonalForm personal={personal} />
+        <PersonalForm personal={personal} onUpdate={handlePersonal} />
+
         <EducationalForm educational={educational} />
         <OccupationalForm occupational={occupational} />
       </aside>

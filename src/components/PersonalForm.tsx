@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 interface Props {
   personal: {
     name: string;
@@ -5,33 +7,52 @@ interface Props {
     number: number;
     address: string;
   };
+  onUpdate: (newVal: object) => void;
 }
 
-const PersonalForm = ({
-  personal: { name, email, number, address },
-}: Props) => {
+const PersonalForm = ({ personal, onUpdate }: Props) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    onUpdate({ [id]: value });
+  };
   return (
     <form className="form input-text">
       <h3>Personal</h3>
       <label htmlFor="name">Name</label>
-      <input type="text" id="name" className="input" value={name} required />
+      <input
+        type="text"
+        id="name"
+        className="input"
+        value={personal.name}
+        required
+        onChange={handleInputChange}
+      />
       <label htmlFor="email">Email</label>
-      <input type="text" id="email" className="input" value={email} required />
+      <input
+        type="text"
+        id="email"
+        className="input"
+        value={personal.email}
+        required
+        onChange={handleInputChange}
+      />
       <label htmlFor="Number">Number</label>
       <input
         type="text"
         id="Number"
         className="input"
-        value={number}
+        value={personal.number}
         required
+        onChange={handleInputChange}
       />
       <label htmlFor="Address">Address</label>
       <input
         type="text"
         id="Address"
         className="input"
-        value={address}
+        value={personal.address}
         required
+        onChange={handleInputChange}
       />
     </form>
   );
