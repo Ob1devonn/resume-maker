@@ -17,10 +17,8 @@ interface Props {
     date: string;
     details: string;
   };
-  //  education: [];
-  //experience: [];
 }
-/*, education, experience */
+
 export default function Resume({ personal, educational, occupational }: Props) {
   const name = personal.name ? <h2>{personal.name}</h2> : <h2>name</h2>;
   const email = personal.email ? (
