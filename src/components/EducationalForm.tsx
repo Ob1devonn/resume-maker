@@ -1,3 +1,6 @@
+import { ChangeEvent } from "react";
+import { Educational } from "../App";
+
 interface Props {
   educational: {
     schoolName: string;
@@ -5,11 +8,14 @@ interface Props {
     date: string;
     details: string;
   };
+  onUpdate: (newVal: Educational) => void;
 }
 
-const EducationalForm = ({
-  educational: { schoolName, study, date, details },
-}: Props) => {
+const EducationalForm = ({ educational, onUpdate }: Props) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    onUpdate({ ...educational, [id]: value });
+  };
   return (
     <form className="form input-text">
       <h3>Education</h3>
@@ -18,20 +24,36 @@ const EducationalForm = ({
         type="text"
         id="schoolName"
         className="input"
-        value={schoolName}
+        value={educational.schoolName}
         required
+        onChange={handleInputChange}
       />
       <label htmlFor="study">Field of Study</label>
-      <input type="text" id="study" className="input" value={study} required />
+      <input
+        type="text"
+        id="study"
+        className="input"
+        value={educational.study}
+        required
+        onChange={handleInputChange}
+      />
       <label htmlFor="date">Date</label>
-      <input type="text" id="date" className="input" value={date} required />
+      <input
+        type="text"
+        id="date"
+        className="input"
+        value={educational.date}
+        required
+        onChange={handleInputChange}
+      />
       <label htmlFor="details">Details</label>
       <input
         type="text"
         id="details"
         className="input"
-        value={details}
+        value={educational.details}
         required
+        onChange={handleInputChange}
       />
     </form>
   );

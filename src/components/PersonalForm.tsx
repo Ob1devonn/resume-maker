@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import { Personal } from "../App";
 
 interface Props {
   personal: {
@@ -7,13 +8,13 @@ interface Props {
     number: number;
     address: string;
   };
-  onUpdate: (newVal: object) => void;
+  onUpdate: (newVal: Personal) => void;
 }
 
 const PersonalForm = ({ personal, onUpdate }: Props) => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
-    onUpdate({ [id]: value });
+    onUpdate({ ...personal, [id]: value });
   };
   return (
     <form className="form input-text">
