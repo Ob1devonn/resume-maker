@@ -96,6 +96,8 @@ aside {
 }
 
 footer {
-  background-color: red;
+  background-color: hsl(34, 100%, 82%);
+  text-align: center;
+  padding: 3rem;
   grid-area: footer;
 }

@@ -78,7 +78,9 @@ const App = () => {
           onUpdate={handleOccupational}
         />
       </aside>
-      <footer></footer>
+      <footer>
+        <p>Created by DeVonn Cluse</p>
+      </footer>
     </div>
   );
 };
